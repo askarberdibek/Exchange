@@ -9,16 +9,17 @@ import SwiftUI
 
 @main
 struct ExchangeApp: App {
+    let rates = CurrencyRates(buyUSD: "0.0", sellUSD: "0.0", buyEUR: "0.0", sellEUR: "0.0", buyRUB: "0.0", sellRUB: "0.0", buyKZT: "0.0", sellKZT: "0.0")
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(rates: rates)
         }
     }
 }
 
 var currencyRates = CurrencyRates.self
 
-func fetchAverageCurrencyRates() {
+func fetchAverageCurrencyRates(completion:  @escaping(CurrencyRates) -> Void) {
     let urlString = "https://data.fx.kg/api/v1/average"
     guard let url = URL(string: urlString) else {
         print("Некорректный URL")
@@ -48,7 +49,8 @@ func fetchAverageCurrencyRates() {
                         let currencyRates = CurrencyRates(buyUSD: buyUSD, sellUSD: sellUSD, buyEUR: buyEUR, sellEUR: sellEUR, buyRUB: buyRUB, sellRUB: sellRUB, buyKZT: buyKZT, sellKZT: sellKZT)
                         
                         // Теперь у вас есть структура с данными, которые можно использовать в вашем приложении
-                        print("Средний курс USD: Покупка - \(currencyRates.buyUSD), Продажа - \(currencyRates.sellUSD)")
+                        //print("Средний курс USD: Покупка - \(currencyRates.buyUSD), Продажа - \(currencyRates.sellUSD)")
+                        completion(currencyRates)
                     }
                 }
             } catch {
