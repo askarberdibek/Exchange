@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7B25660D2A6FB3FA00021D66 /* BankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25660C2A6FB3F900021D66 /* BankView.swift */; };
-		7B2DDE622A6F984C00C07286 /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = 7B2DDE612A6F984C00C07286 /* OptionallyDecodable */; };
 		7B751BE32A6E5F0A0013F641 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B751BE22A6E5F090013F641 /* ApiModel.swift */; };
 		7B751BE52A6E639F0013F641 /* AverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B751BE42A6E639F0013F641 /* AverageView.swift */; };
+		7B76DF952A7A133500246FF1 /* Rates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76DF932A7A133500246FF1 /* Rates.swift */; };
+		7B76DF962A7A133500246FF1 /* Json4Swift_Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B76DF942A7A133500246FF1 /* Json4Swift_Base.swift */; };
 		7BC983B72A67AD1600643928 /* ExchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC983B62A67AD1600643928 /* ExchangeApp.swift */; };
 		7BC983B92A67AD1600643928 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC983B82A67AD1600643928 /* ContentView.swift */; };
 		7BC983BB2A67AD1D00643928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BC983BA2A67AD1D00643928 /* Assets.xcassets */; };
@@ -21,6 +22,8 @@
 		7B25660C2A6FB3F900021D66 /* BankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankView.swift; sourceTree = "<group>"; };
 		7B751BE22A6E5F090013F641 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		7B751BE42A6E639F0013F641 /* AverageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageView.swift; sourceTree = "<group>"; };
+		7B76DF932A7A133500246FF1 /* Rates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rates.swift; sourceTree = "<group>"; };
+		7B76DF942A7A133500246FF1 /* Json4Swift_Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json4Swift_Base.swift; sourceTree = "<group>"; };
 		7BC983B32A67AD1600643928 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BC983B62A67AD1600643928 /* ExchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeApp.swift; sourceTree = "<group>"; };
 		7BC983B82A67AD1600643928 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B2DDE622A6F984C00C07286 /* OptionallyDecodable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +64,6 @@
 				7BE0BFF22A69978F00D21972 /* Model */,
 				7BE0BFF12A69978000D21972 /* View */,
 				7BE0BFF02A69976800D21972 /* API Functions */,
-				7BC983B62A67AD1600643928 /* ExchangeApp.swift */,
 				7BC983B82A67AD1600643928 /* ContentView.swift */,
 				7BC983BA2A67AD1D00643928 /* Assets.xcassets */,
 				7BC983BC2A67AD1D00643928 /* Preview Content */,
@@ -81,6 +82,7 @@
 		7BE0BFF02A69976800D21972 /* API Functions */ = {
 			isa = PBXGroup;
 			children = (
+				7BC983B62A67AD1600643928 /* ExchangeApp.swift */,
 			);
 			path = "API Functions";
 			sourceTree = "<group>";
@@ -98,8 +100,18 @@
 			isa = PBXGroup;
 			children = (
 				7B751BE22A6E5F090013F641 /* ApiModel.swift */,
+				7BE40E022A77A49300E69DB6 /* JSON TEST */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7BE40E022A77A49300E69DB6 /* JSON TEST */ = {
+			isa = PBXGroup;
+			children = (
+				7B76DF942A7A133500246FF1 /* Json4Swift_Base.swift */,
+				7B76DF932A7A133500246FF1 /* Rates.swift */,
+			);
+			path = "JSON TEST";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +131,6 @@
 			);
 			name = Exchange;
 			packageProductDependencies = (
-				7B2DDE612A6F984C00C07286 /* OptionallyDecodable */,
 			);
 			productName = Exchange;
 			productReference = 7BC983B32A67AD1600643928 /* Exchange.app */;
@@ -150,7 +161,6 @@
 			);
 			mainGroup = 7BC983AA2A67AD1600643928;
 			packageReferences = (
-				7B2DDE602A6F984C00C07286 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */,
 			);
 			productRefGroup = 7BC983B42A67AD1600643928 /* Products */;
 			projectDirPath = "";
@@ -180,8 +190,10 @@
 			files = (
 				7BC983B92A67AD1600643928 /* ContentView.swift in Sources */,
 				7B25660D2A6FB3FA00021D66 /* BankView.swift in Sources */,
+				7B76DF962A7A133500246FF1 /* Json4Swift_Base.swift in Sources */,
 				7B751BE32A6E5F0A0013F641 /* ApiModel.swift in Sources */,
 				7B751BE52A6E639F0013F641 /* AverageView.swift in Sources */,
+				7B76DF952A7A133500246FF1 /* Rates.swift in Sources */,
 				7BC983B72A67AD1600643928 /* ExchangeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,25 +395,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7B2DDE602A6F984C00C07286 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/idrougge/OptionallyDecodable";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7B2DDE612A6F984C00C07286 /* OptionallyDecodable */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7B2DDE602A6F984C00C07286 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */;
-			productName = OptionallyDecodable;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7BC983AB2A67AD1600643928 /* Project object */;
 }

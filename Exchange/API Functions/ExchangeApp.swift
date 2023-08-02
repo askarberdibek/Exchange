@@ -12,18 +12,10 @@ import SwiftUI
 @main
 struct ExchangeApp: App {
     let rates = CurrencyRates(buyUSD: "0.0", sellUSD: "0.0", buyEUR: "0.0", sellEUR: "0.0", buyRUB: "0.0", sellRUB: "0.0", buyKZT: "0.0", sellKZT: "0.0")
-    let banks = ExchangeRates(
-        id: 1,
-        title: "РСК Банк",
-        officialTitle: "ОАО \"РСК Банк\"",
-        slug: "rsk-bank",
-        websiteUrl: "http://www.rsk.kg",
-        rates: [:]
-    )
-
+    //let banks = Banks()
     var body: some Scene {
         WindowGroup {
-            ContentView(rates: rates, banks: banks)
+            ContentView(rates: rates)
         }
     }
 }
@@ -82,17 +74,18 @@ func fetchAverageCurrencyRates(completion:  @escaping(CurrencyRates) -> Void) {
     }.resume()
 }
 
-func decodeExchangeRates(data: Data) -> ExchangeRates? {
+func decodeExchangeRates(data: Data) -> Banks? {
     let decoder = JSONDecoder()
     do {
-        let exchangeRates = try decoder.decode(ExchangeRates.self, from: data)
+        let exchangeRates = try decoder.decode(Banks.self, from: data)
+        print(exchangeRates.website_url as Any)
         return exchangeRates
     } catch {
         return nil
     }
 }
 
-func fetchBanksCurrentRates(completion:  @escaping(ExchangeRates) -> Void) {
+func fetchBanksCurrentRates(completion:  @escaping(Banks) -> Void) {
     let urlString = "https://data.fx.kg/api/v1/current"
     guard let url = URL(string: urlString) else {
         print("Некорректный URL")
@@ -115,21 +108,20 @@ func fetchBanksCurrentRates(completion:  @escaping(ExchangeRates) -> Void) {
             do {
                 let jsonData = data // JSON данные
                 let decoder = JSONDecoder()
-                let bank = try decoder.decode(ExchangeRates.self, from: jsonData!)
+                let bank = try decoder.decode(Banks.self, from: jsonData!)
                 // Теперь у вас есть объект типа Bank, соответствующий структуре модели
                 // Можете использовать свойства этого объекта для получения данных из JSON
                 completion(bank)
 
-                print("ID: \(bank.id)")
-                print("Title: \(bank.title)")
-                print("Official Title: \(bank.officialTitle)")
-                print("Slug: \(bank.slug)")
-                print("Website URL: \(bank.websiteUrl)")
+//                print("ID: \(bank.id)")
+//                print("Title: \(bank.title)")
+//                print("Official Title: \(bank.officialTitle)")
+//                print("Slug: \(bank.slug)")
+//                print("Website URL: \(bank.websiteUrl)")
 
             } catch {
                 print("Ошибка при декодировании JSON: \(error)")
             }
-
         }
     }.resume()
 }
