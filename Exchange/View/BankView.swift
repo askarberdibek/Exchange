@@ -10,6 +10,9 @@ import SwiftUI
 struct BankView: View {
     var body: some View {
         Text("В разработке")
+            .onAppear{
+                print(filejson)
+            }
     }
 }
 

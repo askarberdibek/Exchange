@@ -25,16 +25,10 @@ struct ContentView: View {
 }
 
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let rates = CurrencyRates(buyUSD: "0.0", sellUSD: "0.0", buyEUR: "0.0", sellEUR: "0.0", buyRUB: "0.0", sellRUB: "0.0", buyKZT: "0.0", sellKZT: "0.0")
-//        let banks = Banks.self
-//        
-//        ContentView(rates: rates, banks: banks)
-//    }
-//}
-
-//.padding()
-//            Button(action: {makeAPIRequest()}, label: {
-//                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-//            })
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        let rates = CurrencyRates(buyUSD: "0.0", sellUSD: "0.0", buyEUR: "0.0", sellEUR: "0.0", buyRUB: "0.0", sellRUB: "0.0", buyKZT: "0.0", sellKZT: "0.0")
+        
+        ContentView(rates: rates)
+    }
+}

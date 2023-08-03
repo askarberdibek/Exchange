@@ -9,11 +9,9 @@ import SwiftUI
 
 struct AverageView: View{
     @State var rates: CurrencyRates
-    @State var banks: Banks?
-//    let ratesString = banks.rates.map { "\($0.key): \($0.value)" }.joined(separator: ", ").self
+
 
     var body: some View{
-        //let ratesString = banks?.rates.map { "\($0.key): \($0.value)" }.joined(separator: ", ")
         VStack{
            
             Form {
@@ -39,13 +37,6 @@ struct AverageView: View{
         .onAppear{
             fetchAverageCurrencyRates{ currencyRates in
                 rates.self = currencyRates
-            }
-            fetchBanksCurrentRates { bank in
-                banks.self = bank
-                print(banks?.official_title as Any)
-                if banks != nil{
-                    print("Ошибка декодирования")
-                }
             }
         }
     }

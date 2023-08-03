@@ -37,3 +37,5 @@ struct ExchangeRates: Codable {
     let websiteUrl: String
     let rates: [String: String]
 }
+
+
