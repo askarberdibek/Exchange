@@ -9,12 +9,14 @@ import SwiftUI
 
 struct BankView: View {
     var body: some View {
-        Text("В разработке")
-            .onAppear{
-                print(filejson)
-            }
+        Text("в разработке")
+        .onAppear{
+            responseJson()
+        }
     }
 }
+    
+
 
 struct BankView_Previews: PreviewProvider {
     static var previews: some View {

@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
+import Foundation
 
-//var currencyRates = CurrencyRates.self
 
 @main
 struct ExchangeApp: App {
@@ -72,8 +72,6 @@ func fetchAverageCurrencyRates(completion:  @escaping(CurrencyRates) -> Void) {
         }
     }.resume()
 }
-
-
 
 
 
