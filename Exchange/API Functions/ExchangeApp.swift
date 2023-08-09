@@ -74,4 +74,59 @@ func fetchAverageCurrencyRates(completion:  @escaping(CurrencyRates) -> Void) {
 }
 
 
+func loadBanks(completion: @escaping ([Bank]?) -> Void) {
+    let urlString = "https://data.fx.kg/api/v1/average"
+    guard let url = URL(string: urlString) else {
+        print("Некорректный URL")
+        completion(nil)
+        return
+    }
+    
+    var request = URLRequest(url: url)
+    request.addValue("Bearer eGC1NbLTtU73kyoAH62L9G7i5dlU9MLrdYIcgsy4", forHTTPHeaderField: "Authorization")
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error = error {
+            print("Ошибка при выполнении запроса: \(error.localizedDescription)")
+            completion(nil)
+            return
+        }
+        
+        if let data = data {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .useDefaultKeys 
+            do {
+                let banks = try decoder.decode([Bank].self, from: data)
+                completion(banks)
+                print(banks)
+            } catch {
+                print("Ошибка при декодировании данных: \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
+    }
+    task.resume()
+}
+var jsonbanks : [Bank] = load("response.json")
 
+func load<T: Decodable>(_ filename: String) -> T {
+    let data: Data
+    
+    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+    else {
+        fatalError("Couldn't find \(filename) in main bundle.")
+    }
+    
+    do {
+        data = try Data(contentsOf: file)
+    } catch {
+        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+    }
+    
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
+    } catch {
+        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+    }
+}

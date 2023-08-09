@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B0632112A81E87000B00B85 /* NBKR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0632102A81E87000B00B85 /* NBKR.swift */; };
 		7B25660D2A6FB3FA00021D66 /* BankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B25660C2A6FB3F900021D66 /* BankView.swift */; };
+		7B50FD692A83D90D006B521F /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B50FD682A83D90D006B521F /* response.json */; };
 		7B751BE32A6E5F0A0013F641 /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B751BE22A6E5F090013F641 /* ApiModel.swift */; };
 		7B751BE52A6E639F0013F641 /* AverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B751BE42A6E639F0013F641 /* AverageView.swift */; };
 		7BC983B72A67AD1600643928 /* ExchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC983B62A67AD1600643928 /* ExchangeApp.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		7B0632102A81E87000B00B85 /* NBKR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBKR.swift; sourceTree = "<group>"; };
 		7B25660C2A6FB3F900021D66 /* BankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankView.swift; sourceTree = "<group>"; };
+		7B50FD682A83D90D006B521F /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		7B751BE22A6E5F090013F641 /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		7B751BE42A6E639F0013F641 /* AverageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageView.swift; sourceTree = "<group>"; };
 		7BC983B32A67AD1600643928 /* Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,7 @@
 		7BC983AA2A67AD1600643928 = {
 			isa = PBXGroup;
 			children = (
+				7B50FD682A83D90D006B521F /* response.json */,
 				7BC983B52A67AD1600643928 /* Exchange */,
 				7BC983B42A67AD1600643928 /* Products */,
 			);
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BC983BE2A67AD1D00643928 /* Preview Assets.xcassets in Resources */,
+				7B50FD692A83D90D006B521F /* response.json in Resources */,
 				7BC983BB2A67AD1D00643928 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State public var rates: CurrencyRates
-    @StateObject private var dataManager = DataManager() // Data manager to manage the data
+
     var body: some View {
         TabView{
             AverageView(rates: rates)

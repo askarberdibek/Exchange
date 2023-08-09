@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct BankListView: View {
+    @State private var fetchedBanks: [Bank] = [] // Переменная для хранения результатов запроса
     var body: some View {
         List{
-            ForEach(filejson!, id: \.id) { bank in
+            ForEach(jsonbanks, id: \.id) { bank in
                 OneBankView(bank: bank)
                 //FullBankRow(bank: bank)
+                
             }
+        }
+        .onAppear {
+//            loadBanks { banks in
+//                if let banks = banks {
+//                    fetchedBanks = banks // Сохраняем
+//                } else {
+//                    // Обработка ошибки, если не удалось получить данные
+//                }
+//            }
+            print(jsonbanks[0].rates[0].buy_eur)
         }
         .listStyle(.plain)
     }
@@ -91,4 +103,26 @@ struct FullBankRow: View{
     }
 }
 
-
+struct BanksView: View{
+    @State private var fetchedBanks: [Bank] = [] // Переменная для хранения результатов запроса
+    
+    var body: some View {
+        VStack {
+            // Вывод данных из fetchedBanks
+            List(fetchedBanks, id: \.id) { bank in
+                Text("Bank ID: \(bank.id)")
+                Text("Title: \(bank.title)")
+                // Остальные свойства банка
+            }
+        }
+        .onAppear {
+            loadBanks { banks in
+                if let banks = banks {
+                    fetchedBanks = banks // Сохраняем полученные банки
+                } else {
+                    // Обработка ошибки, если не удалось получить данные
+                }
+            }
+        }
+    }
+}

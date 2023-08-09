@@ -10,9 +10,6 @@ import SwiftUI
 struct BankView: View {
     var body: some View {
         Text("в разработке")
-        .onAppear{
-            responseJson()
-        }
     }
 }
     
