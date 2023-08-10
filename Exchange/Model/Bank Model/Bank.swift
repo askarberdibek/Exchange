@@ -10,8 +10,8 @@ struct Bank: Codable {
 }
 
 struct ExchangeRate: Codable {
-    let organization_id: Int
-    let base_currency_id: Int
+    //let organization_id: Int
+    //let base_currency_id: Int
     let created_at: String
     let updated_at: String
     let is_current: Int
@@ -33,3 +33,40 @@ struct ExchangeRate: Codable {
     let buy_try: String?
     let sell_try: String?
 }
+
+struct Banks: Decodable, Identifiable{
+    var id: Int
+    var title: String
+    var official_title: String
+    var slug: String
+    var website_url: String
+    var rates: [Rates]
+}
+
+struct Rates: Decodable, Identifiable{
+    var id: Int
+    var organization_id: Int
+    var base_currency_id: Int
+    var created_at: String
+    var updated_at: String
+    var is_current: Int
+    var type: String
+    var buy_usd: String
+    var sell_usd: String
+    var buy_eur: String
+    var sell_eur: String
+    var buy_rub: String
+    var sell_rub: String
+    var buy_kzt: String
+    var sell_kzt: String
+    var buy_uzs: String?
+    var sell_uzs: String?
+    var buy_cny: String?
+    var sell_cny: String?
+    var buy_gbp: String?
+    var sell_gbp: String?
+    var buy_try: String?
+    var sell_try: String?
+}
+
+var banksdata: [Banks] = []

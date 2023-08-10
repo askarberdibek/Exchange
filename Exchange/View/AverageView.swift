@@ -10,7 +10,6 @@ import SwiftUI
 struct AverageView: View{
     @State var rates: CurrencyRates
 
-
     var body: some View{
         VStack{
            
@@ -38,6 +37,15 @@ struct AverageView: View{
             fetchAverageCurrencyRates{ currencyRates in
                 rates.self = currencyRates
             }
+            
+            loadBanks { banks in
+                if let banks = banks {
+                    banksdata.self = banks // Присваиваем полученные банки переменной banksdata
+                } else {
+                    // Обработка ошибки, если не удалось получить данные
+                }
+            }
+
         }
     }
 }

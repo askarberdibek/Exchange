@@ -8,24 +8,14 @@
 import SwiftUI
 
 struct BankListView: View {
-    @State private var fetchedBanks: [Bank] = [] // Переменная для хранения результатов запроса
+    //@State private var fetchedBanks: [Banks] = [] // Переменная для хранения результатов запроса
     var body: some View {
         List{
-            ForEach(jsonbanks, id: \.id) { bank in
-                OneBankView(bank: bank)
+            ForEach(banksdata.self, id: \.id) { bank in
+                //OneBankView(bank: bank)
                 //FullBankRow(bank: bank)
-                
+                OneBankView(bank: bank)
             }
-        }
-        .onAppear {
-//            loadBanks { banks in
-//                if let banks = banks {
-//                    fetchedBanks = banks // Сохраняем
-//                } else {
-//                    // Обработка ошибки, если не удалось получить данные
-//                }
-//            }
-            print(jsonbanks[0].rates[0].buy_eur)
         }
         .listStyle(.plain)
     }
@@ -38,7 +28,7 @@ struct BankListView_Previews: PreviewProvider {
 }
 
 struct OneBankView: View {
-    var bank: Bank
+    var bank: Banks
     var body: some View {
         VStack {
             HStack(alignment: .top, spacing: 4){
@@ -54,11 +44,10 @@ struct OneBankView: View {
                     if !regular.isEmpty {
                         Text("Наличные:")
                         ForEach(regular, id: \.created_at) { rate in
-
-                            Text("USD: \(rate.buy_usd ?? "N/A") - : \(rate.sell_usd ?? "N/A")")
-                            Text("EUR: \(rate.buy_eur ?? "N/A") - : \(rate.sell_eur ?? "N/A")")
-                            Text("RUB: \(rate.buy_rub ?? "N/A") - : \(rate.sell_rub ?? "N/A")")
-                            Text("KZT: \(rate.buy_kzt ?? "N/A") - : \(rate.sell_kzt ?? "N/A")")
+                            Text("USD: \(rate.buy_usd) - : \(rate.sell_usd)")
+                            Text("EUR: \(rate.buy_eur) - : \(rate.sell_eur)")
+                            Text("RUB: \(rate.buy_rub) - : \(rate.sell_rub)")
+                            Text("KZT: \(rate.buy_kzt) - : \(rate.sell_kzt)")
                         }
                     }
                 }
@@ -68,10 +57,10 @@ struct OneBankView: View {
                     if !regular.isEmpty {
                         Text("Безналичные:")
                         ForEach(regular, id: \.created_at) { rate in
-                            Text("USD: \(rate.buy_usd ?? "N/A") - : \(rate.sell_usd ?? "N/A")")
-                            Text("EUR: \(rate.buy_eur ?? "N/A") - : \(rate.sell_eur ?? "N/A")")
-                            Text("RUB: \(rate.buy_rub ?? "N/A") - : \(rate.sell_rub ?? "N/A")")
-                            Text("KZT: \(rate.buy_kzt ?? "N/A") - : \(rate.sell_kzt ?? "N/A")")
+                            Text("USD: \(rate.buy_usd) - : \(rate.sell_usd)")
+                            Text("EUR: \(rate.buy_eur) - : \(rate.sell_eur)")
+                            Text("RUB: \(rate.buy_rub) - : \(rate.sell_rub)")
+                            Text("KZT: \(rate.buy_kzt) - : \(rate.sell_kzt)")
                         }
                     }
                 }
@@ -104,7 +93,7 @@ struct FullBankRow: View{
 }
 
 struct BanksView: View{
-    @State private var fetchedBanks: [Bank] = [] // Переменная для хранения результатов запроса
+    @State private var fetchedBanks: [Banks] = [] // Переменная для хранения результатов запроса
     
     var body: some View {
         VStack {
@@ -120,7 +109,7 @@ struct BanksView: View{
                 if let banks = banks {
                     fetchedBanks = banks // Сохраняем полученные банки
                 } else {
-                    // Обработка ошибки, если не удалось получить данные
+                    //print("Неудача")
                 }
             }
         }

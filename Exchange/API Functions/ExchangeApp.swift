@@ -74,11 +74,10 @@ func fetchAverageCurrencyRates(completion:  @escaping(CurrencyRates) -> Void) {
 }
 
 
-func loadBanks(completion: @escaping ([Bank]?) -> Void) {
-    let urlString = "https://data.fx.kg/api/v1/average"
+func loadBanks(completion: @escaping ([Banks]?) -> Void) {
+    let urlString = "https://data.fx.kg/api/v1/current"
     guard let url = URL(string: urlString) else {
         print("Некорректный URL")
-        completion(nil)
         return
     }
     
@@ -88,28 +87,24 @@ func loadBanks(completion: @escaping ([Bank]?) -> Void) {
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         if let error = error {
             print("Ошибка при выполнении запроса: \(error.localizedDescription)")
-            completion(nil)
             return
         }
         
-        if let data = data {
+        do {
             let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .useDefaultKeys 
-            do {
-                let banks = try decoder.decode([Bank].self, from: data)
-                completion(banks)
-                print(banks)
-            } catch {
-                print("Ошибка при декодировании данных: \(error.localizedDescription)")
-                completion(nil)
-            }
+            let banks: [Banks] = try decoder.decode([Banks].self, from: data!) // Декодируем в массив [Bank]
+            completion(banks) // Передаем результат через замыкание
+            print(banks[0].rates[0].created_at)
+        } catch {
+            print("Ошибка при декодировании данных: \(error.localizedDescription)")
         }
     }
     task.resume()
 }
-var jsonbanks : [Bank] = load("response.json")
 
-func load<T: Decodable>(_ filename: String) -> T {
+var jsonbanks : [Banks] = loads("response.json")
+
+func loads<T: Decodable>(_ filename: String) -> T {
     let data: Data
     
     guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
